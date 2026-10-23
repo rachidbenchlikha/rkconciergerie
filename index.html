@@ -548,6 +548,16 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
 .btn.wa{background:#25D366; border-color:#25D366; color:#fff}
 @media (max-width:600px){ .wafab span{display:none} .wafab{padding:14px; bottom:calc(env(safe-area-inset-bottom,0px) + 16px)} }
 
+/* furnishing page */
+.fgal{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+.fgal button{position:relative; border:0; padding:0; margin:0; border-radius:14px; overflow:hidden; aspect-ratio:4/3; background:var(--sand); cursor:pointer; display:block}
+.fgal img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease}
+.fgal button:hover img,.fgal button:focus-visible img{transform:scale(1.035)}
+.fgal button:focus-visible{outline:2px solid var(--rust); outline-offset:3px}
+.how.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){ .how.three{grid-template-columns:1fr} }
+@media (max-width:700px){ .fgal{grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px} }
+@media (prefers-reduced-motion:reduce){ .fgal img{transition:none} }
 </style>
 </head>
 <body>
@@ -562,6 +572,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
       <a href="#home" data-nav="home" data-t="navHome"></a>
       <a href="#stay" data-nav="stay" data-t="navStay"></a>
       <a href="#owners" data-nav="owners" data-t="navOwners"></a>
+      <a href="#furniture" data-nav="furniture" data-t="navFurn"></a>
       <a href="#about" data-nav="about" data-t="navAbout"></a>
       <a href="#contact" data-nav="contact" data-t="navContact"></a>
     </nav>
@@ -582,6 +593,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
   <a href="#home" data-nav="home" data-t="navHome"></a>
   <a href="#stay" data-nav="stay" data-t="navStay"></a>
   <a href="#owners" data-nav="owners" data-t="navOwners"></a>
+  <a href="#furniture" data-nav="furniture" data-t="navFurn"></a>
   <a href="#about" data-nav="about" data-t="navAbout"></a>
   <a href="#contact" data-nav="contact" data-t="navContact"></a>
 </nav>
@@ -705,6 +717,35 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
   </div></div>
 </section>
 
+<!-- FURNISHING -->
+<section class="view" data-view="furniture" hidden>
+  <div class="owner-hero"><div class="wrap">
+    <div><div class="eyebrow" data-t="fEyebrow"></div>
+      <h1 class="page-title" data-t="fH1" style="font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,56px);line-height:1.05;margin:10px 0 12px;text-wrap:balance"></h1>
+      <p style="font-size:17px;color:var(--muted);max-width:52ch;margin:0 0 20px" data-t="fLead"></p>
+      <div class="actions" style="flex-wrap:wrap"><a class="btn rust" id="fMail" href="mailto:contact@rkconciergerie.com" data-t="fCta"></a><button type="button" class="btn" data-scroll="fPortfolio" data-t="fSeeWork"></button></div>
+    </div>
+    <figure><img src="img/MAA-11.jpg" alt="" width="760" height="547"></figure>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="sec-h"><div><div class="eyebrow" data-t="fSvcEyebrow"></div><h2 data-t="fSvcH"></h2></div></div>
+    <div class="services" id="fServices"></div>
+  </div></div>
+  <div class="sec tint" id="fPortfolio"><div class="wrap">
+    <div class="sec-h"><div><div class="eyebrow" data-t="fPortEyebrow"></div><h2 data-t="fPortH"></h2><p data-t="fPortP"></p></div></div>
+    <div class="fgal" id="fGallery"></div>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="sec-h"><div><div class="eyebrow" data-t="fHowEyebrow"></div><h2 data-t="fHowH"></h2></div></div>
+    <ol class="how three" id="fHow"></ol>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div><div class="eyebrow" data-t="fBandEyebrow"></div><h2 data-t="fBandH"></h2><p data-t="fBandP"></p><a class="btn light" id="fMail2" href="mailto:contact@rkconciergerie.com" data-t="fCta"></a></div>
+    <ul><li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span><div><b dir="ltr" style="user-select:all">contact@rkconciergerie.com</b><span data-t="fBandMail"></span></div></li>
+    <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span><div><b dir="ltr" style="user-select:all">+971 50 129 1587</b><span data-t="fBandWa"></span></div></li></ul>
+  </div></div>
+</section>
+
 <!-- ABOUT -->
 <section class="view" data-view="about" hidden>
   <div class="page-head ph-photo"><div class="wrap">
@@ -748,7 +789,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
 <footer class="site"><div class="wrap">
   <div><a href="#home" data-nav="home" class="flink" aria-label="RK Luxury Stays"><img class="lg-l" src="img/logo-navy.png" alt="RK Luxury Stays" width="520" height="362"><img class="lg-d" src="img/logo-cream.png" alt="RK Luxury Stays" width="520" height="362"></a><span data-t="footAbout"></span></div>
   <div><h4 data-t="footGuests"></h4><a href="#stay" data-nav="stay" data-t="navStay"></a><a href="#contact" data-nav="contact" data-t="navContact"></a></div>
-  <div><h4 data-t="footOwners"></h4><a href="#owners" data-nav="owners" data-t="navOwners"></a><a href="#about" data-nav="about" data-t="navAbout"></a><a href="mailto:contact@rkconciergerie.com" dir="ltr">contact@rkconciergerie.com</a><a href="https://wa.me/971501291587" target="_blank" rel="noopener" dir="ltr">WhatsApp · +971 50 129 1587</a></div>
+  <div><h4 data-t="footOwners"></h4><a href="#owners" data-nav="owners" data-t="navOwners"></a><a href="#furniture" data-nav="furniture" data-t="navFurn"></a><a href="#about" data-nav="about" data-t="navAbout"></a><a href="mailto:contact@rkconciergerie.com" dir="ltr">contact@rkconciergerie.com</a><a href="https://wa.me/971501291587" target="_blank" rel="noopener" dir="ltr">WhatsApp · +971 50 129 1587</a></div>
   <div class="fine" data-t="footFine"></div>
 </div></footer>
 
@@ -972,6 +1013,47 @@ Object.assign(T.en,{"homeH1": "Furnished apartments in Casablanca, ready when yo
 Object.assign(T.fr,{"homeH1": "Des appartements meublés à Casablanca, prêts dès votre arrivée", "homeLead": "Gérés par des professionnels, entièrement meublés et vérifiés avant chaque séjour.", "s2": "Taille", "searchBtn": "Rechercher", "anySize": "Toutes tailles", "freeN": "libres à vos dates", "stdEyebrow": "Le standard RK", "stdH": "Ce qui nous distingue", "stdP": "Pourquoi nos voyageurs préfèrent nos appartements aux hôtels et aux locations au hasard.", "std": [["MAA-11", "Sélectionnés pour leur qualité", "Chaque appartement est choisi, meublé et géré par notre propre équipe."], ["MAA-23", "Chez vous dès le premier jour", "Une vraie cuisine, un vrai salon et du linge propre à votre arrivée."], ["BSJ-01", "Aucune surprise", "Les photos sont réelles et le prix affiché sur Airbnb est celui que vous payez."], ["MAA-13", "Courts ou longs séjours", "D’un week-end à plusieurs mois, dans le même appartement."]], "finalH": "Trouvez votre appartement à Casablanca", "finalP": "45 appartements meublés, 9 quartiers, une seule équipe.", "finalCta": "Rechercher un appartement"});
 Object.assign(T.ar,{"homeH1": "شقق مفروشة في الدار البيضاء، جاهزة لحظة وصولك", "homeLead": "مُدارة باحترافية، مفروشة بالكامل، ومفحوصة قبل كل إقامة.", "s2": "الحجم", "searchBtn": "بحث", "anySize": "أي حجم", "freeN": "متاحة في تواريخك", "stdEyebrow": "معيار RK", "stdH": "ما الذي يميّزنا", "stdP": "لماذا يفضّل الضيوف شققنا على الفنادق والإيجارات العشوائية.", "std": [["MAA-11", "مختارة بعناية", "كل شقة يختارها فريقنا ويؤثثها ويديرها بنفسه."], ["MAA-23", "كأنك في بيتك من اليوم الأول", "مطبخ كامل وصالون حقيقي ومفارش نظيفة عند وصولك."], ["BSJ-01", "بلا مفاجآت", "الصور حقيقية، والسعر الظاهر على Airbnb هو ما تدفعه."], ["MAA-13", "إقامات قصيرة أو طويلة", "من عطلة نهاية أسبوع إلى عدة أشهر، في الشقة نفسها."]], "finalH": "اعثر على شقتك في الدار البيضاء", "finalP": "45 شقة مفروشة، 9 أحياء، وفريق واحد.", "finalCta": "ابحث عن شقة"});
 
+Object.assign(T.en,{
+ navFurn:"Furnishing", fEyebrow:"RK Furniture · Casablanca",
+ fH1:"We furnish and renovate apartments at competitive rates",
+ fLead:"From an empty apartment to a space that is ready to live in or rent. Our team handles the furnishing and the renovation, so you deal with one contact.",
+ fCta:"Request a quote", fSeeWork:"See our work",
+ fSvcEyebrow:"What we do", fSvcH:"Furnishing, renovation, or both",
+ fServices:[["sofa","Furnishing","Sofas, beds, dining tables, lighting, curtains and the finishing touches, chosen to work together and installed for you."],["brush","Renovation","Painting, wall panelling, false ceilings and lighting, plus kitchen and bathroom updates."],["key","Turnkey","One team and one quote, from the empty apartment to the day you hand over the keys."]],
+ fPortEyebrow:"Our portfolio", fPortH:"Apartments we have furnished", fPortP:"A selection of apartments in Casablanca, furnished by our team. Tap a photo to enlarge it.",
+ fHowEyebrow:"How it works", fHowH:"Three steps",
+ fHow:[["Tell us about your apartment","Send the address, the size and what you have in mind."],["Get your quote","We come back with a clear price for the furnishing, the renovation, or both."],["We do the work","Our team handles everything and hands over an apartment that is ready."]],
+ fBandEyebrow:"RK Furniture", fBandH:"Tell us about your apartment", fBandP:"Send us the address, the size and your budget. We will reply with a quote.",
+ fBandMail:"Write to us", fBandWa:"Message us on WhatsApp", fMailSubject:"Quote request: furnishing and renovation", fPhoto:"Photo"
+});
+Object.assign(T.fr,{
+ navFurn:"Aménagement", fEyebrow:"RK Furniture · Casablanca",
+ fH1:"Nous meublons et rénovons vos appartements à des tarifs compétitifs",
+ fLead:"D’un appartement vide à un espace prêt à habiter ou à louer. Notre équipe s’occupe de l’ameublement et de la rénovation : vous n’avez qu’un seul interlocuteur.",
+ fCta:"Demander un devis", fSeeWork:"Voir nos réalisations",
+ fSvcEyebrow:"Ce que nous faisons", fSvcH:"Ameublement, rénovation, ou les deux",
+ fServices:[["sofa","Ameublement","Canapés, lits, tables, luminaires, rideaux et finitions, choisis pour aller ensemble et installés pour vous."],["brush","Rénovation","Peinture, moulures murales, faux plafonds et éclairage, ainsi que cuisines et salles de bain."],["key","Clé en main","Une seule équipe et un seul devis, de l’appartement vide à la remise des clés."]],
+ fPortEyebrow:"Nos réalisations", fPortH:"Des appartements que nous avons meublés", fPortP:"Une sélection d’appartements à Casablanca, meublés par notre équipe. Touchez une photo pour l’agrandir.",
+ fHowEyebrow:"Comment ça marche", fHowH:"Trois étapes",
+ fHow:[["Parlez-nous de votre appartement","Envoyez l’adresse, la surface et ce que vous imaginez."],["Recevez votre devis","Nous revenons vers vous avec un prix clair pour l’ameublement, la rénovation, ou les deux."],["Nous faisons les travaux","Notre équipe s’occupe de tout et vous remet un appartement prêt."]],
+ fBandEyebrow:"RK Furniture", fBandH:"Parlez-nous de votre appartement", fBandP:"Envoyez-nous l’adresse, la surface et votre budget. Nous vous répondons avec un devis.",
+ fBandMail:"Écrivez-nous", fBandWa:"Écrivez-nous sur WhatsApp", fMailSubject:"Demande de devis : ameublement et rénovation", fPhoto:"Photo"
+});
+Object.assign(T.ar,{
+ navFurn:"التأثيث", fEyebrow:"RK Furniture • الدار البيضاء",
+ fH1:"نؤثّث ونجدّد الشقق بأسعار تنافسية",
+ fLead:"من شقة فارغة إلى مساحة جاهزة للسكن أو للإيجار. فريقنا يتولى التأثيث والتجديد، فيكون لك مُحاوِر واحد فقط.",
+ fCta:"اطلب عرض سعر", fSeeWork:"شاهد أعمالنا",
+ fSvcEyebrow:"ما نقدّمه", fSvcH:"تأثيث، تجديد، أو الاثنان معًا",
+ fServices:[["sofa","التأثيث","أرائك وأسرّة وطاولات وإضاءة وستائر ولمسات أخيرة، نختارها لتتناسق معًا ونركّبها لك."],["brush","التجديد","دهان وإطارات جدارية وأسقف مستعارة وإضاءة، إضافة إلى تجديد المطابخ والحمّامات."],["key","جاهزة للتسليم","فريق واحد وعرض سعر واحد، من الشقة الفارغة إلى يوم تسليم المفاتيح."]],
+ fPortEyebrow:"أعمالنا", fPortH:"شقق قمنا بتأثيثها", fPortP:"مجموعة من الشقق في الدار البيضاء أثّثها فريقنا. اضغط على الصورة لتكبيرها.",
+ fHowEyebrow:"كيف نعمل", fHowH:"ثلاث خطوات",
+ fHow:[["أخبرنا عن شقتك","أرسل العنوان والمساحة وما تفكّر فيه."],["احصل على عرض السعر","نعود إليك بسعر واضح للتأثيث أو التجديد أو لهما معًا."],["ننفّذ العمل","يتولى فريقنا كل شيء ويسلّمك شقة جاهزة."]],
+ fBandEyebrow:"RK Furniture", fBandH:"أخبرنا عن شقتك", fBandP:"أرسل لنا العنوان والمساحة وميزانيتك، وسنردّ عليك بعرض سعر.",
+ fBandMail:"راسلنا", fBandWa:"راسلنا عبر واتساب", fMailSubject:"طلب عرض سعر: تأثيث وتجديد", fPhoto:"صورة"
+});
+const FGAL=["MAA-23","FRB-02","MAA-13","MAA-30","MAA-02","MAA-20","CFC-01","MAA-29","MAA-21","ZEN-01","MAA-05","MAA-18"];
+
 const ICON={
  g:'<svg viewBox="0 0 16 16"><circle cx="8" cy="5" r="2.6"/><path d="M2.8 14c.6-2.8 2.7-4.3 5.2-4.3s4.6 1.5 5.2 4.3"/></svg>',
  b:'<svg viewBox="0 0 16 16"><path d="M1.5 12.5v-7M1.5 10h13v2.5M14.5 10V8.2c0-1-.8-1.7-1.7-1.7H7v3.5"/><circle cx="4.2" cy="7.8" r="1.3"/></svg>',
@@ -986,7 +1068,12 @@ const ICON={
  fix:'<svg viewBox="0 0 20 20"><path d="M12.5 3.5a3.5 3.5 0 0 0-3.3 4.6l-5.5 5.5a1.4 1.4 0 0 0 2 2l5.5-5.5a3.5 3.5 0 0 0 4.6-3.3l-2 1.2-1.8-1-.1-2.1z"/></svg>',
  doc:'<svg viewBox="0 0 20 20"><path d="M5 2.5h7l3.5 3.5v11.5H5z"/><path d="M12 2.5V6h3.5M7.5 10h5M7.5 13h5"/></svg>'
 };
-const VIEWS=["home","stay","owners","about","contact"];
+Object.assign(ICON,{
+ sofa:'<svg viewBox="0 0 20 20"><path d="M4 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M2.5 11a1.5 1.5 0 0 1 3 0v1.5h9V11a1.5 1.5 0 0 1 3 0v4h-15z"/><path d="M5 15v1.5M15 15v1.5"/></svg>',
+ brush:'<svg viewBox="0 0 20 20"><rect x="3" y="3" width="11" height="4.5" rx="1"/><path d="M14 5.2h2.5V10H10v2.5"/><rect x="8.5" y="12.5" width="3" height="5" rx="1"/></svg>',
+ key:'<svg viewBox="0 0 20 20"><circle cx="6.5" cy="10" r="3.5"/><path d="M10 10h7.5M14.5 10v2.5M17.5 10v2"/></svg>'
+});
+const VIEWS=["home","stay","owners","furniture","about","contact"];
 const state={lang:"en",view:"home",beds:0,area:"",guests:1,sort:"rec",cin:"",cout:""};
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
@@ -1041,6 +1128,10 @@ function renderStatic(){
   $("#ownList").innerHTML=L.ownList.map(([b,s])=>`<li><span class="tick">${ICON.tick}</span><div><b>${esc(b)}</b><span>${esc(s)}</span></div></li>`).join("");
   $("#services").innerHTML=L.services.map(([ic,h,p])=>`<div class="svc"><span class="ic">${ICON[ic]}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
   $("#how").innerHTML=L.how.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("");
+  $("#fServices").innerHTML=L.fServices.map(([ic,h,p])=>`<div class="svc"><span class="ic">${ICON[ic]}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
+  $("#fHow").innerHTML=L.fHow.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("");
+  $("#fGallery").innerHTML=FGAL.map((c,i)=>`<button type="button" data-fshot="${i}" aria-label="${esc(L.fPhoto)} ${i+1} / ${FGAL.length}"><img src="img/${c}.jpg" alt="" loading="lazy" width="760" height="547"></button>`).join("");
+  $("#fMail").href=$("#fMail2").href="mailto:contact@rkconciergerie.com?subject="+encodeURIComponent(L.fMailSubject);
   $("#faq").innerHTML=L.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("");
   $("#abProse").innerHTML=L.abProse.map(p=>`<p>${esc(p)}</p>`).join("");
   $("#timeline").innerHTML=L.timeline.map(([y,s])=>`<li><b class="num">${esc(y)}</b><span>${esc(s)}</span></li>`).join("");
@@ -1163,6 +1254,7 @@ function closeLb(){ $("#lb").hidden=true; }
 document.addEventListener("click",e=>{
   const o=e.target.closest("[data-open]"); if(o){openSheet(o.dataset.open); return;}
   const s=e.target.closest("[data-shot]"); if(s){openLb(+s.dataset.shot); return;}
+  const f=e.target.closest("[data-fshot]"); if(f){ shots=FGAL.map(c=>({src:`img/${c}.jpg`,w:760,h:547,label:null})); openLb(+f.dataset.fshot); return; }
   if(e.target.closest("#sClose")||e.target.id==="sheet") closeSheet();
 });
 $("#lbClose").onclick=closeLb; $("#lbPrev").onclick=()=>showShot(idx-1); $("#lbNext").onclick=()=>showShot(idx+1);
