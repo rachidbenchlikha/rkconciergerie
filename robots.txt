@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /tools/
+
+Sitemap: https://rkconciergerie.com/sitemap.xml
