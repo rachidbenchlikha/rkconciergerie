@@ -556,6 +556,9 @@ html[dir="rtl"] .dp-c.re{background:linear-gradient(to right,transparent 50%,var
 .area-card h3{color:#fff; font-size:19px}
 .area-card .ac{color:#fff; background:rgba(255,255,255,.18); padding:2px 9px; border-radius:999px; font-weight:500}
 .area-card p{color:rgba(255,255,255,.82)}
+.area-card.wide{grid-column:1/-1; aspect-ratio:16/5}
+@media (max-width:900px){ .area-card.wide{aspect-ratio:16/7} }
+@media (max-width:600px){ .area-card.wide{aspect-ratio:4/3} }
 
 /* standard cards */
 .feat4{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px}
@@ -707,7 +710,9 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
     <button type="button" class="area-card" data-areaf="Zenata Beach"><img src="img/ZEN-01.jpg" alt="" loading="lazy">
       <span class="ab"><span class="an"><h3>شاطئ زناتة</h3><span class="ac">شقة واحدة</span></span><p>مدينة زناتة البيئية، مقابل الشاطئ.</p></span></button>
     <button type="button" class="area-card" data-areaf="Dar Bouazza"><img src="img/DBZ-01.jpg" alt="" loading="lazy">
-      <span class="ab"><span class="an"><h3>دار بوعزة</h3><span class="ac">شقة واحدة</span></span><p>سكن على البحر مع مسبح وتراس.</p></span></button></div>
+      <span class="ab"><span class="an"><h3>دار بوعزة</h3><span class="ac">شقة واحدة</span></span><p>سكن على البحر مع مسبح وتراس.</p></span></button>
+    <button type="button" class="area-card wide" data-areaf="Tangier"><img src="img/TNG-area.jpg" alt="" loading="lazy">
+      <span class="ab"><span class="an"><h3>طنجة • مدينة أخرى</h3><span class="ac">شقتان</span></span><p>شققنا خارج الدار البيضاء، قرب الغابة والشاطئ والقطار السريع.</p></span></button></div>
   </div></div>
 
   <div class="sec soft"><div class="wrap">
@@ -1208,9 +1213,10 @@ const AREA_DESC={
  "Beauséjour":["The modern Beau Living complex.","La résidence moderne Beau Living.","مجمّع بو ليفينغ الحديث."],
  "Hassan II Mosque":["Bourgogne, steps from the mosque and the ocean.","Bourgogne, à deux pas de la mosquée et de l’océan.","بورغون، على بُعد خطوات من المسجد والمحيط."],
  "Zenata Beach":["Zenata Eco-City, across the street from the beach.","Zenata Eco-City, en face de la plage.","مدينة زناتة البيئية، مقابل الشاطئ."],
- "Dar Bouazza":["Seaside living with a pool and a terrace.","Vie en bord de mer avec piscine et terrasse.","سكن على البحر مع مسبح وتراس."]
+ "Dar Bouazza":["Seaside living with a pool and a terrace.","Vie en bord de mer avec piscine et terrasse.","سكن على البحر مع مسبح وتراس."],
+ "Tangier":["Our apartments outside Casablanca, near the forest, the beach and the TGV.","Nos appartements hors de Casablanca, près de la forêt, de la plage et du TGV.","شققنا خارج الدار البيضاء، قرب الغابة والشاطئ والقطار السريع."]
 };
-const AREA_IMG={"Maarif":"MAA-02","Twin Center":"TWC-01","Casa Finance City":"CFC-01","Ferme Bretonne":"FRB-01","Palmier":"PAL-01","Beauséjour":"BSJ-01","Hassan II Mosque":"BRG-01","Zenata Beach":"ZEN-01","Dar Bouazza":"DBZ-01"};
+const AREA_IMG={"Maarif":"MAA-02","Twin Center":"TWC-01","Casa Finance City":"CFC-01","Ferme Bretonne":"FRB-01","Palmier":"PAL-01","Beauséjour":"BSJ-01","Hassan II Mosque":"BRG-01","Zenata Beach":"ZEN-01","Dar Bouazza":"DBZ-01","Tangier":"TNG-area"};
 const WHATSAPP="971501291587"; // digits with country code, e.g. "2126XXXXXXXX"; buttons stay hidden while empty
 
 Object.assign(T.en,{"brandSub": "by RK Conciergerie", "navStay": "Book a stay", "navOwners": "List your apartment", "ctaTop": "Book a stay", "homeH1": "Stay like you live in Casablanca", "homeLead": "46 furnished apartments in Maârif, Twin Center, Casa Finance City and by the sea. Pick your dates and see what’s free right now.", "whyEyebrow": "Why guests choose us", "whyH": "Hotel standards, apartment space", "founderRole": "Founder, RK Conciergerie", "founderBio": "Engineer by training and Airbnb Superhost since 2017. Rachid built RK from a side project into a team that manages nearly 100 apartments in Casablanca.", "finalH": "Ready when you are", "finalCta": "Choose your dates", "ctFounder": "Guests and owners talk to the same team I lead. Write to us and we’ll get back to you quickly.", "why": [["photo", "Real photos", "Every photo on this site was taken in the apartment itself."], ["clean", "Clean and checked", "Each apartment is cleaned and checked before you arrive, with fresh linen."], ["guest", "A team that answers", "Message us through Airbnb and a person from our local team replies."]]});
@@ -1546,9 +1552,9 @@ function renderStatic(){
   $("#timeline").innerHTML=L.timeline.map(([y,s])=>`<li><b class="num">${esc(y)}</b><span>${esc(s)}</span></li>`).join("");
   $("#values").innerHTML=L.values.map(([h,p])=>`<div class="vcard"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
   const counts={}; DATA.forEach(d=>counts[d.area]=(counts[d.area]||0)+1);
-  const order=["Maarif","Twin Center","Casa Finance City","Ferme Bretonne","Palmier","Beauséjour","Hassan II Mosque","Zenata Beach","Dar Bouazza"];
+  const order=["Maarif","Twin Center","Casa Finance City","Ferme Bretonne","Palmier","Beauséjour","Hassan II Mosque","Zenata Beach","Dar Bouazza","Tangier"];
   $("#areas").innerHTML=order.filter(a=>counts[a]).map(a=>{const d=DATA.find(x=>x.area===a); return `
-    <button type="button" class="area-card" data-areaf="${esc(a)}"><img src="img/${AREA_IMG[a]}.jpg" alt="" loading="lazy">
+    <button type="button" class="area-card${a==="Tangier"?" wide":""}" data-areaf="${esc(a)}"><img src="img/${AREA_IMG[a]}.jpg" alt="" loading="lazy">
       <span class="ab"><span class="an"><h3>${esc(d.areaT[state.lang])}</h3><span class="ac">${esc(t("areaN",counts[a]))}</span></span><p>${esc(AREA_DESC[a][LI[state.lang]])}</p></span></button>`;}).join("");
   // mail + whatsapp
   const subj=encodeURIComponent(t("mailSubject"));
