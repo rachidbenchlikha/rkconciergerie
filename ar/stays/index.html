@@ -482,7 +482,7 @@ html[dir="rtl"] .hshade{background:linear-gradient(270deg,rgba(9,15,28,.72) 0%,r
 html[lang="ar"] .hcopy h1{line-height:1.35}
 .hcopy p{margin:0; font-size:clamp(15px,1.6vw,18px); color:rgba(255,255,255,.88); max-width:52ch}
 #homeSlot{position:relative; z-index:2; margin-top:-42px; padding-inline:clamp(12px,3vw,40px)}
-.sbar{display:grid; grid-template-columns:1fr 1fr 1fr auto; align-items:stretch; background:var(--surface); border-radius:16px; box-shadow:0 18px 50px rgba(16,31,56,.16); border:1px solid var(--line); padding:8px; gap:0}
+.sbar{display:grid; grid-template-columns:1.1fr 1.1fr 1fr 1fr auto; align-items:stretch; background:var(--surface); border-radius:16px; box-shadow:0 18px 50px rgba(16,31,56,.16); border:1px solid var(--line); padding:8px; gap:0}
 .sf{display:flex; flex-direction:column; gap:2px; padding:8px 16px; border-inline-start:1px solid var(--line); cursor:pointer; min-width:0; border-radius:10px}
 .sf:first-child{border-inline-start:0}
 .sf:hover{background:var(--soft)}
@@ -492,6 +492,10 @@ html[lang="ar"] .sf .dl{letter-spacing:0; font-size:12px}
 .sf .dv{display:block; width:100%; border:0; background:transparent; font:inherit; font-size:15px; font-weight:600; color:var(--fg); padding:2px 0; text-align:start; cursor:pointer; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .sf .dv.ph{color:var(--muted); font-weight:500}
 .sf.act{background:var(--soft); box-shadow:inset 0 0 0 1.5px var(--rust)}
+.sf select:invalid{color:var(--muted); font-weight:500}
+.sf.err{background:var(--soft); box-shadow:inset 0 0 0 1.5px var(--rust)}
+.sf.err .dl{color:var(--rust)}
+.sreq{color:var(--rust); font-weight:600; margin-inline-end:10px}
 
 /* date range picker */
 .dp-back{position:fixed; inset:0; z-index:59; background:rgba(9,15,28,.45)}
@@ -544,7 +548,7 @@ html[dir="rtl"] .dp-c.re{background:linear-gradient(to right,transparent 50%,var
 .stats-row span span{font-size:13px; color:var(--muted)}
 
 /* stay page search bar */
-.stay-head .sbar{grid-template-columns:1fr 1fr 1fr auto}
+.stay-head .sbar{grid-template-columns:1.1fr 1.1fr 1fr 1fr auto}
 .stay-head .wrap{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
 
 /* areas as image tiles */
@@ -590,7 +594,6 @@ html[dir="rtl"] .dp-c.re{background:linear-gradient(to right,transparent 50%,var
 @media (max-width:700px){
   .sbar,.stay-head .sbar{grid-template-columns:1fr 1fr; gap:4px}
   .sf{border-inline-start:0; background:var(--soft)}
-  .sf:nth-child(3){grid-column:1/-1}
   .sbtn{grid-column:1/-1; min-height:50px}
   #homeSlot{margin-top:-28px; padding-inline:8px}
   .hmedia{height:auto; aspect-ratio:3/4; min-height:0; border-radius:18px}
@@ -675,7 +678,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
     </div>
     <div id="homeSlot">
       
-      <p class="sline"><span id="nights"></span><button type="button" class="clear" id="dClear" hidden="" data-t="clearDates">مسح التواريخ</button></p>
+      <p class="sline"><span class="sreq" id="gReq" hidden="" data-t="guestsReq">يرجى اختيار عدد الضيوف.</span><span id="nights"></span><button type="button" class="clear" id="dClear" hidden="" data-t="clearDates">مسح التواريخ</button></p>
     </div>
     <ul class="stats-row">
       <li><span class="si"><svg viewBox="0 0 20 20"><path d="M3 9.5L10 4l7 5.5V17H3z"></path><path d="M8 17v-4.5h4V17"></path></svg></span><span><b class="num">48</b><span data-t="pf1">شقة متاحة للحجز</span></span></li>
@@ -851,6 +854,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
     <div id="staySlot"><div class="sbar" id="planner">
         <div class="sf" id="sfIn"><span class="dl" data-t="checkin">الوصول</span><button type="button" class="dv ph" id="dIn" aria-haspopup="dialog">أضف تاريخًا</button></div>
         <div class="sf" id="sfOut"><span class="dl" data-t="checkout">المغادرة</span><button type="button" class="dv ph" id="dOut" aria-haspopup="dialog">أضف تاريخًا</button></div>
+        <label class="sf" for="gSel" id="sfG"><span class="dl" data-t="guests">الضيوف</span><select id="gSel" required=""><option value="" disabled="">أضف الضيوف</option><option value="1">ضيف واحد</option><option value="2">ضيفان</option><option value="3">3 ضيوف</option><option value="4">4 ضيوف</option><option value="5">5 ضيوف</option><option value="6">6 ضيوف</option><option value="7">7 ضيوف</option><option value="8">8 ضيوف</option></select></label>
         <label class="sf" for="bedSel"><span class="dl" data-t="s2">الحجم</span><select id="bedSel"><option value="0">أي حجم</option><option value="1">غرفة نوم واحدة</option><option value="2">غرفتا نوم</option><option value="3">3 غرف نوم</option></select></label>
         <button type="button" class="sbtn" id="go"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6"></circle><path d="M10.5 10.5L14 14"></path></svg><span id="goLabel">بحث</span></button>
       </div></div>
@@ -1631,7 +1635,7 @@ const T = {
   go:(n,d)=>d?(n===1?"Show the 1 free apartment":"Show "+n+" free apartments"):"Show all "+n+" apartments",clearDates:"Clear dates",addDates:"Add your dates",nights:n=>n===1?"1 night":n+" nights",
   all:"All",bed1:"1 bedroom",bed2:"2 bedrooms",bed3:"3 bedrooms",area:"Area",anyArea:"All areas",guests:"Guests",sort:"Sort",
   sRec:"Recommended",sRate:"Top rated",sRev:"Most reviewed",sBig:"Largest first",
-  checkin:"Check-in",checkout:"Check-out",addDate:"Add date",pickIn:"Select check-in",pickOut:"Select check-out",dpPrev:"Previous month",dpNext:"Next month",dpClose:"Close",avail:n=>n===1?"1 apartment free for your dates":n+" apartments free for your dates",
+  checkin:"Check-in",addGuests:"Add guests",guestsReq:"Please choose the number of guests.",gN:n=>n===1?"1 guest":n+" guests",checkout:"Check-out",addDate:"Add date",pickIn:"Select check-in",pickOut:"Select check-out",dpPrev:"Previous month",dpNext:"Next month",dpClose:"Close",avail:n=>n===1?"1 apartment free for your dates":n+" apartments free for your dates",
   synced:h=>"Availability updated "+h,ago:(n,u)=>u==="m"?n+" min ago":(u==="h"?(n===1?"1 hour ago":n+" hours ago"):(n===1?"1 day ago":n+" days ago")),
   noneDates:"Nothing is free for these exact dates. Try moving them by a day or two, or clear the dates to see every apartment.",
   count:n=>n===1?"1 apartment":n+" apartments",none:"No apartment matches these filters. Try fewer guests or another area.",
@@ -1687,7 +1691,7 @@ const T = {
   go:(n,d)=>d?(n===1?"Voir l’appartement libre":"Voir les "+n+" appartements libres"):"Voir les "+n+" appartements",clearDates:"Effacer les dates",addDates:"Ajoutez vos dates",nights:n=>n===1?"1 nuit":n+" nuits",
   all:"Tous",bed1:"1 chambre",bed2:"2 chambres",bed3:"3 chambres",area:"Quartier",anyArea:"Tous les quartiers",guests:"Voyageurs",sort:"Trier",
   sRec:"Recommandés",sRate:"Mieux notés",sRev:"Plus d’avis",sBig:"Plus grands d’abord",
-  checkin:"Arrivée",checkout:"Départ",addDate:"Ajouter",pickIn:"Choisissez l’arrivée",pickOut:"Choisissez le départ",dpPrev:"Mois précédent",dpNext:"Mois suivant",dpClose:"Fermer",avail:n=>n===1?"1 appartement libre à vos dates":n+" appartements libres à vos dates",
+  checkin:"Arrivée",addGuests:"Ajouter",guestsReq:"Indiquez le nombre de voyageurs.",gN:n=>n===1?"1 voyageur":n+" voyageurs",checkout:"Départ",addDate:"Ajouter",pickIn:"Choisissez l’arrivée",pickOut:"Choisissez le départ",dpPrev:"Mois précédent",dpNext:"Mois suivant",dpClose:"Fermer",avail:n=>n===1?"1 appartement libre à vos dates":n+" appartements libres à vos dates",
   synced:h=>"Disponibilités mises à jour "+h,ago:(n,u)=>u==="m"?"il y a "+n+" min":(u==="h"?"il y a "+n+" h":(n===1?"il y a 1 jour":"il y a "+n+" jours")),
   noneDates:"Rien n’est libre à ces dates exactes. Décalez-les d’un jour ou deux, ou effacez les dates pour voir tous les appartements.",
   count:n=>n===1?"1 appartement":n+" appartements",none:"Aucun appartement ne correspond. Essayez moins de voyageurs ou un autre quartier.",
@@ -1743,7 +1747,7 @@ const T = {
   go:(n,d)=>d?"عرض الشقق المتاحة ("+n+")":"عرض جميع الشقق ("+n+")",clearDates:"مسح التواريخ",addDates:"أضف تواريخك",nights:n=>n===1?"ليلة واحدة":(n===2?"ليلتان":(n<=10?n+" ليالٍ":n+" ليلة")),
   all:"الكل",bed1:"غرفة نوم واحدة",bed2:"غرفتا نوم",bed3:"3 غرف نوم",area:"الحي",anyArea:"جميع الأحياء",guests:"الضيوف",sort:"الترتيب",
   sRec:"المقترحة",sRate:"الأعلى تقييمًا",sRev:"الأكثر تقييمات",sBig:"الأكبر أولًا",
-  checkin:"الوصول",checkout:"المغادرة",addDate:"أضف تاريخًا",pickIn:"اختر تاريخ الوصول",pickOut:"اختر تاريخ المغادرة",dpPrev:"الشهر السابق",dpNext:"الشهر التالي",dpClose:"إغلاق",avail:n=>(n===1?"شقة واحدة متاحة":(n===2?"شقتان متاحتان":(n<=10?n+" شقق متاحة":n+" شقة متاحة")))+" في تواريخك",
+  checkin:"الوصول",addGuests:"أضف الضيوف",guestsReq:"يرجى اختيار عدد الضيوف.",gN:n=>n===1?"ضيف واحد":(n===2?"ضيفان":n+" ضيوف"),checkout:"المغادرة",addDate:"أضف تاريخًا",pickIn:"اختر تاريخ الوصول",pickOut:"اختر تاريخ المغادرة",dpPrev:"الشهر السابق",dpNext:"الشهر التالي",dpClose:"إغلاق",avail:n=>(n===1?"شقة واحدة متاحة":(n===2?"شقتان متاحتان":(n<=10?n+" شقق متاحة":n+" شقة متاحة")))+" في تواريخك",
   synced:h=>"آخر تحديث للتوفر "+h,ago:(n,u)=>u==="m"?"منذ "+n+" دقيقة":(u==="h"?(n===1?"منذ ساعة":"منذ "+n+" ساعات"):(n===1?"منذ يوم":"منذ "+n+" أيام")),
   noneDates:"لا توجد شقة متاحة في هذه التواريخ بالضبط. جرّب تقديمها أو تأخيرها يومًا أو يومين، أو امسح التواريخ لعرض جميع الشقق.",
   count:n=>n===1?"شقة واحدة":(n===2?"شقتان":(n<=10?n+" شقق":n+" شقة")),none:"لا توجد شقة تطابق هذه الخيارات. جرّب عددًا أقل من الضيوف أو حيًّا آخر.",
@@ -2002,7 +2006,7 @@ Object.assign(ICON,{
  key:'<svg viewBox="0 0 20 20"><circle cx="6.5" cy="10" r="3.5"/><path d="M10 10h7.5M14.5 10v2.5M17.5 10v2"/></svg>'
 });
 const VIEWS=["home","stay","owners","furniture","about","faq","contact"];
-const state={lang:"en",view:"home",beds:0,area:"",guests:1,sort:"rec",cin:"",cout:""};
+const state={lang:"en",view:"home",beds:0,area:"",guests:1,gSet:false,sort:"rec",cin:"",cout:""};
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -2091,7 +2095,8 @@ function setLang(l){
   const html=document.documentElement; html.lang=state.lang; html.dir=state.lang==="ar"?"rtl":"ltr";
   $("#lang").value=state.lang;
   $$("[data-t]").forEach(el=>{ const v=t(el.dataset.t); if(typeof v==="string") el.textContent=v; });
-  $("#bedSel").innerHTML=[[0,"anySize"],[1,"bed1"],[2,"bed2"],[3,"bed3"]].map(([v,k])=>`<option value="${v}">${esc(t(k))}</option>`).join(""); $("#bedSel").value=String(state.beds);
+  $("#gSel").innerHTML=`<option value="" disabled>${esc(t("addGuests"))}</option>`+Array.from({length:maxGuests},(_,i)=>`<option value="${i+1}">${esc(t("gN",i+1))}</option>`).join(""); $("#gSel").value=state.gSet?String(state.guests):"";
+  sizeOpts();
   const a=$("#area");
   a.innerHTML=`<option value="">${esc(t("anyArea"))}</option>`+areas.map(x=>{const d=DATA.find(y=>y.area===x);return `<option value="${esc(x)}">${esc(d.areaT[state.lang])}</option>`}).join("");
   a.value=state.area;
@@ -2380,11 +2385,17 @@ const dpFocus=()=>{ const n=$("#dpMonths .dp-d.sel:not(:disabled)")||$("#dpMonth
 $("#sfIn").onclick=e=>{ dpOpen("in"); if(e.detail===0) dpFocus(); };
 $("#sfOut").onclick=e=>{ dpOpen("out"); if(e.detail===0) dpFocus(); };
 document.addEventListener("keydown",e=>{ if(DP.open&&e.key==="Escape"){ e.stopPropagation(); dpClose(true); } },true);
-$("#go").onclick=()=>{ if(state.view!=="stay") show("stay",{push:true}); setTimeout(()=>$("#results").scrollIntoView({behavior:reduced()?"auto":"smooth"}),30); };
+$("#gSel").onchange=e=>setG(+e.target.value);
+$("#go").onclick=()=>{ if(!state.gSet){ $("#sfG").classList.add("err"); $("#gReq").hidden=false; $("#gSel").focus(); try{$("#gSel").showPicker()}catch(e){} return; } if(state.view!=="stay") show("stay",{push:true}); setTimeout(()=>$("#results").scrollIntoView({behavior:reduced()?"auto":"smooth"}),30); };
 $("#dchip").onclick=()=>{ $("#planner").scrollIntoView({behavior:reduced()?"auto":"smooth",block:"center"}); setTimeout(()=>dpOpen(state.cin&&!state.cout?"out":"in"),450); };
 $("#toPlanner").onclick=()=>{ window.scrollTo({top:0,behavior:reduced()?"auto":"smooth"}); setTimeout(()=>dpOpen("in"),500); };
 $("#dClear").onclick=()=>{ state.cin=state.cout=""; render(); };
-function setG(n){ state.guests=Math.max(1,Math.min(maxGuests,n)); $("#gOut").textContent=state.guests; $("#gMinus").disabled=state.guests<=1; $("#gPlus").disabled=state.guests>=maxGuests; render(); }
+function sizeOpts(){ // only sizes that can host the chosen number of guests
+  const ok=b=>DATA.some(d=>d.bedrooms===b&&d.guests>=state.guests);
+  if(state.beds&&!ok(state.beds)) state.beds=0;
+  $("#bedSel").innerHTML=[[0,"anySize"],[1,"bed1"],[2,"bed2"],[3,"bed3"]].filter(([v])=>!v||ok(v)).map(([v,k])=>`<option value="${v}">${esc(t(k))}</option>`).join(""); $("#bedSel").value=String(state.beds);
+}
+function setG(n,init){ state.guests=Math.max(1,Math.min(maxGuests,n)); if(!init){ state.gSet=true; $("#sfG").classList.remove("err"); $("#gReq").hidden=true; } $("#gSel").value=state.gSet?String(state.guests):""; sizeOpts(); $("#gOut").textContent=state.guests; $("#gMinus").disabled=state.guests<=1; $("#gPlus").disabled=state.guests>=maxGuests; render(); }
 $("#gMinus").onclick=()=>setG(state.guests-1); $("#gPlus").onclick=()=>setG(state.guests+1);
 function estText(){
   const f=$("#estForm"), v=n=>(f.elements[n].value||"").trim();
@@ -2437,7 +2448,7 @@ if((!route||route.lang==="en")&&!["en","fr","ar"].includes(hash)){
   if(!pref) pref=(navigator.language||"").slice(0,2);
   if(pref!=="en"&&T[pref]) start=pref;
 }
-setLang(start); setG(1);
+setLang(start); setG(1,true);
 show(startView);
 try{ history.replaceState(null,"",urlFor(startView,start)+(sheet?"#"+sheet:"")); }catch(e){}
 if(sheet) openSheet(sheet);
