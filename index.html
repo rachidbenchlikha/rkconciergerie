@@ -310,6 +310,9 @@ html[lang="ar"] .page-head h1{line-height:1.35}
 .faq summary::after{content:"+"; color:var(--rust); font-size:20px; line-height:1}
 .faq details[open] summary::after{content:"–"}
 .faq p{margin:10px 0 0; color:var(--muted); font-size:14.5px}
+.faq details[open]{border-color:var(--rust)}
+.faq summary::-webkit-details-marker{display:none}
+.faq-more{margin:18px 0 0}
 .owner-hero .wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; padding-block:52px 40px}
 .owner-hero figure{margin:0; border-radius:22px; overflow:hidden; aspect-ratio:4/3; background:var(--sand)}
 .owner-hero figure img{width:100%; height:100%; object-fit:cover; display:block}
@@ -617,6 +620,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
       <a href="#owners" data-nav="owners" data-t="navOwners"></a>
       <a href="#furniture" data-nav="furniture" data-t="navFurn"></a>
       <a href="#about" data-nav="about" data-t="navAbout"></a>
+      <a href="#faq" data-nav="faq" data-t="navFaq"></a>
       <a href="#contact" data-nav="contact" data-t="navContact"></a>
     </nav>
     <div class="right">
@@ -638,6 +642,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
   <a href="#owners" data-nav="owners" data-t="navOwners"></a>
   <a href="#furniture" data-nav="furniture" data-t="navFurn"></a>
   <a href="#about" data-nav="about" data-t="navAbout"></a>
+  <a href="#faq" data-nav="faq" data-t="navFaq"></a>
   <a href="#contact" data-nav="contact" data-t="navContact"></a>
 </nav>
 
@@ -752,7 +757,8 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
   </div></div>
   <div class="sec"><div class="wrap">
     <div class="sec-h"><div><div class="eyebrow" data-t="faqEyebrow"></div><h2 data-t="faqH"></h2></div></div>
-    <div class="faq" id="faq"></div>
+    <div class="faq" id="faqList"></div>
+    <p class="faq-more"><a class="btn" href="#faq" data-nav="faq" data-t="faqMore"></a></p>
   </div></div>
   <div class="band"><div class="wrap">
     <div><h2 data-t="oBandH"></h2><p data-t="oBandP"></p><a class="btn light" href="#contact" data-nav="contact" data-t="oCta"></a></div>
@@ -809,6 +815,28 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
   </div></div>
 </section>
 
+<!-- FAQ -->
+<section class="view" data-view="faq" hidden>
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow" data-t="faqPageEyebrow"></div>
+    <h1 data-t="faqPageH1"></h1>
+    <p data-t="faqPageLead"></p>
+  </div></div>
+  <div class="sec" style="padding-top:30px"><div class="wrap">
+    <div class="sec-h"><div><h2 data-t="faqOwnersH"></h2></div></div>
+    <div class="faq" id="faqOwners"></div>
+  </div></div>
+  <div class="sec tint"><div class="wrap">
+    <div class="sec-h"><div><h2 data-t="faqGuestsH"></h2></div></div>
+    <div class="faq" id="faqGuests"></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div><h2 data-t="faqBandH"></h2><p data-t="faqBandP"></p><a class="btn light" href="#contact" data-nav="contact" data-t="navContact"></a></div>
+    <ul><li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span><div><b dir="ltr" style="user-select:all">contact@rkconciergerie.com</b><span data-t="fBandMail"></span></div></li>
+    <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span><div><b dir="ltr" style="user-select:all">+971 50 129 1587</b><span data-t="fBandWa"></span></div></li></ul>
+  </div></div>
+</section>
+
 <!-- CONTACT -->
 <section class="view" data-view="contact" hidden>
   <div class="page-head"><div class="wrap">
@@ -831,7 +859,7 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
 
 <footer class="site"><div class="wrap">
   <div><a href="#home" data-nav="home" class="flink" aria-label="RK Luxury Stays"><img class="lg-l" src="img/logo-navy.png" alt="RK Luxury Stays" width="520" height="362"><img class="lg-d" src="img/logo-cream.png" alt="RK Luxury Stays" width="520" height="362"></a><span data-t="footAbout"></span></div>
-  <div><h4 data-t="footGuests"></h4><a href="#stay" data-nav="stay" data-t="navStay"></a><a href="#contact" data-nav="contact" data-t="navContact"></a></div>
+  <div><h4 data-t="footGuests"></h4><a href="#stay" data-nav="stay" data-t="navStay"></a><a href="#faq" data-nav="faq" data-t="navFaq"></a><a href="#contact" data-nav="contact" data-t="navContact"></a></div>
   <div><h4 data-t="footOwners"></h4><a href="#owners" data-nav="owners" data-t="navOwners"></a><a href="#furniture" data-nav="furniture" data-t="navFurn"></a><a href="#about" data-nav="about" data-t="navAbout"></a><a href="mailto:contact@rkconciergerie.com" dir="ltr">contact@rkconciergerie.com</a><a href="https://wa.me/971501291587" target="_blank" rel="noopener" dir="ltr">WhatsApp · +971 50 129 1587</a></div>
   <div class="fine" data-t="footFine"></div>
 </div></footer>
@@ -903,11 +931,6 @@ const T = {
   howEyebrow:"How it works",howH:"From first call to first booking",
   how:[["Tell us about your apartment","Area, size, furnished or not, and a few photos."],["We visit and advise","What to buy or change, how to set it up, and the paperwork it needs."],["We list and host","Your listing goes live and our team takes care of every stay."],["You get a monthly statement","Every booking, our fee and any costs, clearly laid out."]],
   faqEyebrow:"Questions owners ask",faqH:"Before you decide",
-  faq:[["Does my apartment need to be furnished?","It helps, but it isn’t required. We tell you what to buy and can coordinate the set-up."],
-       ["Can I still use my apartment?","Yes. Give us your dates in advance and we block them. Bookings already confirmed are kept."],
-       ["What does it cost?","We work on a commission of the rental revenue, so we only earn when you do. The rate depends on the apartment; ask us for a quote."],
-       ["How do I follow what happens?","Every month you receive a statement with each booking, our commission and any costs. The payout schedule is set in your management contract."],
-       ["Is short-term rental legal in Morocco?","Yes, under Law 80-14, provided the apartment is declared and guests are registered. We take care of this with you."]],
   oBandH:"Tell us about your apartment",oBandP:"Send us the area, the size and a few photos. We reply with an honest view of what it can earn.",
   abEyebrow:"About",abH1:"Hi, I’m Rachid.",abLead:"Engineer by training, host since 2017, and the founder of RK Conciergerie.",
   abProse:["I trained as an engineer at the École Mohammadia d’Ingénieurs in Rabat and graduated in 2015. The same year I moved to Dubai to join GSK, my first time living abroad. I spent two years in their Future Leaders programme and four more in marketing as a product manager.",
@@ -964,11 +987,6 @@ const T = {
   howEyebrow:"Comment ça marche",howH:"Du premier appel à la première réservation",
   how:[["Parlez-nous de votre appartement","Quartier, surface, meublé ou non, et quelques photos."],["Nous visitons et conseillons","Ce qu’il faut acheter ou changer, l’aménagement et les formalités nécessaires."],["Nous mettons en ligne et accueillons","Votre annonce est publiée et notre équipe s’occupe de chaque séjour."],["Vous recevez un relevé mensuel","Chaque réservation, notre commission et les éventuels frais, clairement présentés."]],
   faqEyebrow:"Questions de propriétaires",faqH:"Avant de vous décider",
-  faq:[["Mon appartement doit-il être meublé ?","C’est préférable, mais pas obligatoire. Nous vous disons quoi acheter et pouvons coordonner l’installation."],
-       ["Puis-je encore utiliser mon appartement ?","Oui. Donnez-nous vos dates à l’avance et nous les bloquons. Les réservations déjà confirmées sont maintenues."],
-       ["Combien ça coûte ?","Nous travaillons à la commission sur les revenus locatifs : nous ne gagnons que si vous gagnez. Le taux dépend de l’appartement ; demandez-nous un devis."],
-       ["Comment suivre ce qui se passe ?","Chaque mois, vous recevez un relevé avec chaque réservation, notre commission et les frais éventuels. Le calendrier de versement est fixé dans votre mandat de gestion."],
-       ["La location courte durée est-elle légale au Maroc ?","Oui, dans le cadre de la loi 80-14, à condition que l’appartement soit déclaré et les voyageurs enregistrés. Nous nous en occupons avec vous."]],
   oBandH:"Parlez-nous de votre appartement",oBandP:"Envoyez-nous le quartier, la surface et quelques photos. Nous vous répondons avec une estimation honnête de ce qu’il peut rapporter.",
   abEyebrow:"À propos",abH1:"Bonjour, je suis Rachid.",abLead:"Ingénieur de formation, hôte depuis 2017 et fondateur de RK Conciergerie.",
   abProse:["J’ai été formé comme ingénieur à l’École Mohammadia d’Ingénieurs à Rabat, diplômé en 2015. La même année, je suis parti à Dubaï rejoindre GSK : ma première expérience à l’étranger. J’y ai passé deux ans dans le programme Future Leaders, puis quatre ans au marketing comme chef de produit.",
@@ -1025,11 +1043,6 @@ const T = {
   howEyebrow:"كيف نعمل",howH:"من أول مكالمة إلى أول حجز",
   how:[["حدّثنا عن شقتك","الحي، والمساحة، وهل هي مفروشة، وبعض الصور."],["نزورها ونقدّم النصح","ما يجب شراؤه أو تغييره، وطريقة التجهيز، والإجراءات اللازمة."],["ننشر الإعلان ونستقبل الضيوف","يُنشر إعلانك ويتولى فريقنا كل إقامة."],["تتسلّم كشفًا شهريًا","كل حجز وعمولتنا وأي مصاريف، بشكل واضح."]],
   faqEyebrow:"أسئلة الملّاك",faqH:"قبل أن تقرّر",
-  faq:[["هل يجب أن تكون شقتي مفروشة؟","يُفضَّل ذلك لكنه ليس شرطًا. نخبرك بما يجب شراؤه ويمكننا تنسيق التجهيز."],
-       ["هل يمكنني استخدام شقتي؟","نعم. أعطنا تواريخك مسبقًا وسنحجزها لك، مع الإبقاء على الحجوزات المؤكدة."],
-       ["كم التكلفة؟","نعمل بعمولة على عائدات الإيجار، فلا نربح إلا عندما تربح. تختلف النسبة حسب الشقة، اطلب منا عرض سعر."],
-       ["كيف أتابع ما يحدث؟","تتسلّم كل شهر كشفًا بكل حجز وعمولتنا وأي مصاريف. ويُحدَّد موعد التحويلات في عقد الإدارة."],
-       ["هل الإيجار قصير المدة قانوني في المغرب؟","نعم، وفق القانون 80-14، شرط التصريح بالشقة وتسجيل الضيوف. نتولى ذلك معك."]],
   oBandH:"حدّثنا عن شقتك",oBandP:"أرسل لنا الحي والمساحة وبعض الصور، وسنردّ عليك بتقدير صادق لما يمكن أن تحققه.",
   abEyebrow:"من نحن",abH1:"مرحبًا، أنا رشيد.",abLead:"مهندس في الأصل، ومضيف منذ 2017، ومؤسس RK Conciergerie.",
   abProse:["درست الهندسة في المدرسة المحمدية للمهندسين بالرباط وتخرجت سنة 2015. في السنة نفسها انتقلت إلى دبي للعمل في GSK، وكانت أول مرة أعيش فيها خارج المغرب. قضيت سنتين في برنامج Future Leaders، ثم أربع سنوات في التسويق مديرًا للمنتجات.",
@@ -1107,6 +1120,95 @@ Object.assign(T.ar,{
  fBandEyebrow:"التأثيث والتجديد", fBandH:"أخبرنا عن شقتك", fBandP:"أرسل لنا العنوان والمساحة وميزانيتك، وسنردّ عليك بعرض سعر.",
  fBandMail:"راسلنا", fBandWa:"راسلنا عبر واتساب", fMailSubject:"طلب عرض سعر: تأثيث وتجديد", fPhoto:"صورة"
 });
+/* ---------- FAQ (owners list is shown in full on the FAQ page; the first 6 also appear on the owners page) ---------- */
+Object.assign(T.en,{
+ navFaq:"FAQ", faqMore:"See all questions",
+ faqPageEyebrow:"FAQ", faqPageH1:"Your questions, answered",
+ faqPageLead:"What owners and guests ask us most, in one place. Can’t find your answer? Write to us.",
+ faqOwnersH:"For owners", faqGuestsH:"For guests",
+ faqBandH:"Still have a question?", faqBandP:"Write to us and a member of the team will reply.",
+ faqO:[["What does your 23% commission cover?","Our commission is 23% of the rental revenue, so we only earn when you do. It covers our full management service: creating and optimising your listing, pricing, guest messaging and screening, check-in and check-out, cleaning and maintenance coordination, and the paperwork. Any other costs appear separately on your monthly statement."],
+  ["How and when do I get paid?","Payouts come directly from the rental platforms, usually 24 hours after the guest checks in. For any cash bookings, we send you the amount early the following month, together with your owner statement."],
+  ["How do I follow what happens?","Every month you receive a statement that lists each booking, our commission and any costs, so you always see exactly what happened."],
+  ["Is there a minimum contract length?","Yes, six months. We believe it is the minimum needed to see meaningful results."],
+  ["Can I still use my apartment?","Yes. Give us your dates in advance and we block them. Bookings already confirmed are kept."],
+  ["Does my apartment need to be furnished?","It helps, but it isn’t required. We tell you what to buy and can coordinate the set-up."],
+  ["Which areas do you cover, and how do you choose apartments?","We cover most areas of Casablanca. Before adding an apartment to our portfolio, we screen it for location fit, furniture and more. If it isn’t a fit yet, we explain the reasons clearly or suggest what to improve so that it becomes one."],
+  ["Can I get an estimate before signing?","Yes, and it is free. Our estimates are based on data from more than 100 units we have managed in Casablanca over the past five years."],
+  ["Where will my apartment be listed?","Mostly on Airbnb and Booking.com. We also have a database of more than 20,000 guests we have screened in the past."],
+  ["Is short-term rental legal in Morocco?","Yes, under Law 80-14, provided the apartment is declared and guests are registered. We take care of this with you."],
+  ["What contract and rules do guests agree to?","Every guest signs a rental contract digitally. We remind them of their responsibility to respect the building and the country’s rules."],
+  ["What happens if a guest damages something?","A full-time member of our team files the damage claims and follows up with the platforms to get you reimbursed."],
+  ["What if something needs repairing?","Small repairs are handled quickly. Anything larger is approved by you first."],
+  ["Can you furnish or renovate my apartment?","Yes, at competitive rates. See the “Furnish your apartment” page, or write to us for a quote."]],
+ faqG:[["How do I book?","Choose your dates on the “Book a stay” page, open an apartment and press Book. You complete the reservation on Airbnb, at the price shown there."],
+  ["Is smoking allowed?","No. Smoking is not allowed inside any of our apartments."],
+  ["Do I need to show ID?","Yes. Once your booking is confirmed, you are asked to submit your ID."],
+  ["Who can stay together?","Mixed groups that include a Moroccan guest are not allowed without a marriage certificate."],
+  ["Do I have to sign anything?","Yes. Every guest signs a rental contract digitally. It reminds you of your responsibility to respect the building and the country’s rules."],
+  ["What if something gets damaged?","Guests are responsible for damage during their stay. We handle damage claims directly with the booking platform."],
+  ["Who will I deal with during my stay?","Our local team in Casablanca, led by Rachid, an Airbnb Superhost since 2017 with more than 5,000 guest reviews. Message us through Airbnb and a person from the team replies."],
+  ["How can I contact you?","Through Airbnb, on WhatsApp at +971 50 129 1587, or by email at contact@rkconciergerie.com."]]
+});
+Object.assign(T.fr,{
+ navFaq:"FAQ", faqMore:"Voir toutes les questions",
+ faqPageEyebrow:"FAQ", faqPageH1:"Vos questions, nos réponses",
+ faqPageLead:"Ce que les propriétaires et les voyageurs nous demandent le plus, au même endroit. Vous ne trouvez pas votre réponse ? Écrivez-nous.",
+ faqOwnersH:"Pour les propriétaires", faqGuestsH:"Pour les voyageurs",
+ faqBandH:"Une autre question ?", faqBandP:"Écrivez-nous et un membre de l’équipe vous répondra.",
+ faqO:[["Que comprend votre commission de 23 % ?","Notre commission est de 23 % des revenus locatifs : nous ne gagnons que si vous gagnez. Elle couvre l’ensemble de notre service de gestion : création et optimisation de votre annonce, tarification, messages et sélection des voyageurs, arrivées et départs, coordination du ménage et de l’entretien, et les formalités. Les éventuels autres frais apparaissent séparément sur votre relevé mensuel."],
+  ["Comment et quand suis-je payé ?","Les versements viennent directement des plateformes de location, généralement 24 heures après l’arrivée du voyageur. Pour les réservations réglées en espèces, nous vous envoyons le montant début du mois suivant, avec votre relevé propriétaire."],
+  ["Comment suivre ce qui se passe ?","Chaque mois, vous recevez un relevé qui détaille chaque réservation, notre commission et les frais éventuels : vous voyez toujours précisément ce qui s’est passé."],
+  ["Y a-t-il une durée minimale de contrat ?","Oui, six mois. C’est selon nous le minimum pour obtenir des résultats significatifs."],
+  ["Puis-je encore utiliser mon appartement ?","Oui. Donnez-nous vos dates à l’avance et nous les bloquons. Les réservations déjà confirmées sont maintenues."],
+  ["Mon appartement doit-il être meublé ?","C’est préférable, mais pas obligatoire. Nous vous disons quoi acheter et pouvons coordonner l’installation."],
+  ["Quels quartiers couvrez-vous, et comment choisissez-vous les appartements ?","Nous couvrons la plupart des quartiers de Casablanca. Avant d’ajouter un appartement à notre portefeuille, nous l’étudions : emplacement, mobilier, etc. S’il ne convient pas encore, nous vous en expliquons clairement les raisons ou nous vous indiquons ce qu’il faut améliorer pour qu’il convienne."],
+  ["Puis-je obtenir une estimation avant de signer ?","Oui, et c’est gratuit. Nos estimations s’appuient sur les données de plus de 100 logements que nous avons gérés à Casablanca depuis cinq ans."],
+  ["Où mon appartement sera-t-il publié ?","Principalement sur Airbnb et Booking.com. Nous disposons aussi d’une base de plus de 20 000 voyageurs que nous avons déjà vérifiés."],
+  ["La location courte durée est-elle légale au Maroc ?","Oui, dans le cadre de la loi 80-14, à condition que l’appartement soit déclaré et les voyageurs enregistrés. Nous nous en occupons avec vous."],
+  ["Quel contrat et quelles règles les voyageurs acceptent-ils ?","Chaque voyageur signe un contrat de location numérique. Nous lui rappelons son devoir de respecter l’immeuble et les règles du pays."],
+  ["Que se passe-t-il si un voyageur abîme quelque chose ?","Un membre de notre équipe, à plein temps, dépose les demandes d’indemnisation et relance les plateformes pour obtenir votre remboursement."],
+  ["Et si quelque chose doit être réparé ?","Les petites réparations sont traitées rapidement. Tout ce qui est plus important est d’abord validé par vous."],
+  ["Pouvez-vous meubler ou rénover mon appartement ?","Oui, à des tarifs compétitifs. Consultez la page « Meubler mon appartement » ou écrivez-nous pour un devis."]],
+ faqG:[["Comment réserver ?","Choisissez vos dates sur la page « Réserver un séjour », ouvrez un appartement et appuyez sur Réserver. Vous finalisez la réservation sur Airbnb, au prix affiché."],
+  ["Peut-on fumer ?","Non. Il est interdit de fumer à l’intérieur de tous nos appartements."],
+  ["Dois-je présenter une pièce d’identité ?","Oui. Une fois votre réservation confirmée, nous vous demandons de transmettre votre pièce d’identité."],
+  ["Qui peut séjourner ensemble ?","Les groupes mixtes comprenant une personne marocaine ne sont pas acceptés sans acte de mariage."],
+  ["Dois-je signer quelque chose ?","Oui. Chaque voyageur signe un contrat de location numérique, qui lui rappelle son devoir de respecter l’immeuble et les règles du pays."],
+  ["Et si quelque chose est abîmé ?","Les voyageurs sont responsables des dommages survenus pendant leur séjour. Nous traitons les demandes d’indemnisation directement avec la plateforme de réservation."],
+  ["Avec qui serai-je en contact pendant mon séjour ?","Avec notre équipe locale à Casablanca, dirigée par Rachid, Superhôte Airbnb depuis 2017, avec plus de 5 000 avis de voyageurs. Écrivez-nous sur Airbnb : une personne de l’équipe vous répond."],
+  ["Comment vous contacter ?","Via Airbnb, sur WhatsApp au +971 50 129 1587 ou par e-mail à contact@rkconciergerie.com."]]
+});
+Object.assign(T.ar,{
+ navFaq:"الأسئلة الشائعة", faqMore:"عرض كل الأسئلة",
+ faqPageEyebrow:"الأسئلة الشائعة", faqPageH1:"أسئلتكم، وأجوبتنا",
+ faqPageLead:"أكثر ما يسألنا عنه الملّاك والضيوف في مكان واحد. لم تجد جوابك؟ راسلنا.",
+ faqOwnersH:"للملّاك", faqGuestsH:"للضيوف",
+ faqBandH:"هل لديك سؤال آخر؟", faqBandP:"راسلنا وسيردّ عليك أحد أفراد الفريق.",
+ faqO:[["ماذا تشمل عمولتكم البالغة 23%؟","عمولتنا 23% من عائدات الإيجار، فلا نربح إلا عندما تربح. وهي تغطي خدمة الإدارة كاملة: إنشاء إعلانك وتحسينه، وتحديد الأسعار، والرد على الضيوف وفحصهم، والاستقبال والمغادرة، وتنسيق التنظيف والصيانة، والإجراءات الإدارية. وتظهر أي مصاريف أخرى بشكل منفصل في كشفك الشهري."],
+  ["كيف ومتى أتسلّم مستحقاتي؟","تصلك المبالغ مباشرة من منصات الإيجار، عادةً بعد 24 ساعة من وصول الضيف. أما الحجوزات المدفوعة نقدًا فنرسل لك مبلغها في بداية الشهر التالي مع كشف المالك."],
+  ["كيف أتابع ما يحدث؟","تتسلّم كل شهر كشفًا يفصّل كل حجز وعمولتنا وأي مصاريف، فتعرف دائمًا ما جرى بدقة."],
+  ["هل هناك حدّ أدنى لمدة العقد؟","نعم، ستة أشهر. نرى أنها الحدّ الأدنى اللازم لتظهر نتائج ملموسة."],
+  ["هل يمكنني استخدام شقتي؟","نعم. أعطنا تواريخك مسبقًا وسنحجزها لك، مع الإبقاء على الحجوزات المؤكدة."],
+  ["هل يجب أن تكون شقتي مفروشة؟","يُفضَّل ذلك لكنه ليس شرطًا. نخبرك بما يجب شراؤه ويمكننا تنسيق التجهيز."],
+  ["ما الأحياء التي تغطّونها وكيف تختارون الشقق؟","نغطي معظم أحياء الدار البيضاء. قبل إضافة أي شقة إلى محفظتنا نفحصها من حيث الموقع والأثاث وغير ذلك. وإن لم تكن مناسبة بعد، نشرح لك الأسباب بوضوح أو نقترح ما يجب تحسينه لتصبح مناسبة."],
+  ["هل يمكنني الحصول على تقدير قبل التوقيع؟","نعم، مجانًا. تستند تقديراتنا إلى بيانات أكثر من 100 وحدة أدرناها في الدار البيضاء خلال السنوات الخمس الماضية."],
+  ["أين سيُنشر إعلان شقتي؟","في الغالب على Airbnb وBooking.com. ولدينا أيضًا قاعدة بيانات تضم أكثر من 20,000 ضيف سبق أن فحصناهم."],
+  ["هل الإيجار قصير المدة قانوني في المغرب؟","نعم، وفق القانون 80-14، شرط التصريح بالشقة وتسجيل الضيوف. نتولى ذلك معك."],
+  ["ما العقد والقواعد التي يوافق عليها الضيوف؟","يوقّع كل ضيف عقد إيجار رقميًا، ونذكّره بمسؤوليته عن احترام العمارة وقواعد البلد."],
+  ["ماذا يحدث إذا أتلف ضيف شيئًا؟","يتولى أحد أفراد فريقنا المتفرّغين تقديم مطالبات التعويض ومتابعتها مع المنصات لتحصل على تعويضك."],
+  ["وإذا احتاج شيء إلى إصلاح؟","تُنجَز الإصلاحات الصغيرة بسرعة، وأي إصلاح أكبر تعتمده أنت أولًا."],
+  ["هل يمكنكم تأثيث شقتي أو تجديدها؟","نعم، بأسعار تنافسية. اطّلع على صفحة «أثّث شقتك» أو راسلنا للحصول على عرض سعر."]],
+ faqG:[["كيف أحجز؟","اختر تواريخك في صفحة «احجز إقامة»، ثم افتح الشقة واضغط على احجز. تُكمل الحجز على Airbnb بالسعر المعروض."],
+  ["هل التدخين مسموح؟","لا. التدخين ممنوع داخل جميع شققنا."],
+  ["هل يجب تقديم وثيقة هوية؟","نعم. بعد تأكيد حجزك نطلب منك إرسال وثيقة هويتك."],
+  ["من يمكنه الإقامة معًا؟","لا تُقبل المجموعات المختلطة التي تضم شخصًا مغربيًا دون عقد زواج."],
+  ["هل يجب أن أوقّع على شيء؟","نعم. يوقّع كل ضيف عقد إيجار رقميًا يذكّره بمسؤوليته عن احترام العمارة وقواعد البلد."],
+  ["وماذا لو تضرر شيء؟","الضيف مسؤول عن الأضرار خلال إقامته. ونتولى مطالبات التعويض مباشرة مع منصة الحجز."],
+  ["مع من سأتعامل خلال إقامتي؟","مع فريقنا المحلي في الدار البيضاء بقيادة رشيد، مضيف متميز على Airbnb منذ 2017 وله أكثر من 5,000 تقييم من الضيوف. راسلنا عبر Airbnb وسيردّ عليك شخص من الفريق."],
+  ["كيف أتواصل معكم؟","عبر Airbnb أو واتساب على الرقم +971 50 129 1587 أو بالبريد الإلكتروني contact@rkconciergerie.com."]]
+});
+
 const FGAL=["MAA-23","FRB-02","MAA-13","MAA-30","MAA-02","MAA-20","CFC-01","MAA-29","MAA-21","ZEN-01","MAA-05","MAA-18"];
 
 const ICON={
@@ -1128,7 +1230,7 @@ Object.assign(ICON,{
  brush:'<svg viewBox="0 0 20 20"><rect x="3" y="3" width="11" height="4.5" rx="1"/><path d="M14 5.2h2.5V10H10v2.5"/><rect x="8.5" y="12.5" width="3" height="5" rx="1"/></svg>',
  key:'<svg viewBox="0 0 20 20"><circle cx="6.5" cy="10" r="3.5"/><path d="M10 10h7.5M14.5 10v2.5M17.5 10v2"/></svg>'
 });
-const VIEWS=["home","stay","owners","furniture","about","contact"];
+const VIEWS=["home","stay","owners","furniture","about","faq","contact"];
 const state={lang:"en",view:"home",beds:0,area:"",guests:1,sort:"rec",cin:"",cout:""};
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
@@ -1187,7 +1289,16 @@ function renderStatic(){
   $("#fHow").innerHTML=L.fHow.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("");
   $("#fGallery").innerHTML=FGAL.map((c,i)=>`<button type="button" data-fshot="${i}" aria-label="${esc(L.fPhoto)} ${i+1} / ${FGAL.length}"><img src="img/${c}.jpg" alt="" loading="lazy" width="760" height="547"></button>`).join("");
   $("#fMail").href=$("#fMail2").href="mailto:contact@rkconciergerie.com?subject="+encodeURIComponent(L.fMailSubject);
-  $("#faq").innerHTML=L.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("");
+  const faqHtml=a=>a.map(([q,x])=>`<details><summary>${esc(q)}</summary><p>${esc(x)}</p></details>`).join("");
+  $("#faqList").innerHTML=faqHtml(L.faqO.slice(0,6));
+  $("#faqOwners").innerHTML=faqHtml(L.faqO);
+  $("#faqGuests").innerHTML=faqHtml(L.faqG);
+  // FAQPage structured data, rebuilt in the visitor's language
+  try{
+    let ld=document.getElementById("faqLd");
+    if(!ld){ ld=document.createElement("script"); ld.type="application/ld+json"; ld.id="faqLd"; document.head.appendChild(ld); }
+    ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",inLanguage:state.lang,mainEntity:[...L.faqO,...L.faqG].map(([q,x])=>({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:x}}))});
+  }catch(e){}
   $("#abProse").innerHTML=L.abProse.map(p=>`<p>${esc(p)}</p>`).join("");
   $("#timeline").innerHTML=L.timeline.map(([y,s])=>`<li><b class="num">${esc(y)}</b><span>${esc(s)}</span></li>`).join("");
   $("#values").innerHTML=L.values.map(([h,p])=>`<div class="vcard"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
