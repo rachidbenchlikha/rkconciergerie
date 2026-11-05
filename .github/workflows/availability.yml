@@ -1,0 +1,69 @@
+name: Availability sync
+
+# Rebuilds avail.json from the Airbnb iCal feeds and pushes it to main.
+# The feed list lives in the AIRBNB_ICALS repository secret, never in the repo.
+
+on:
+  schedule:
+    - cron: "24 */3 * * *" # every 3 hours, :24 past the hour (UTC)
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: availability-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Rebuild avail.json
+        id: sync
+        continue-on-error: true
+        env:
+          AIRBNB_ICALS: ${{ secrets.AIRBNB_ICALS }}
+          MAX_FAILED: "2"
+        run: python3 tools/sync_availability.py
+
+      - name: Commit and push
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          TOTAL: ${{ steps.sync.outputs.total }}
+          FAILED: ${{ steps.sync.outputs.failed }}
+        run: |
+          set -euo pipefail
+          git config user.name "Rachid Benchlikha"
+          git config user.email "rachidbenchlikha@users.noreply.github.com"
+          git add avail.json
+          git commit -m "Update availability"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected, rebasing and retrying"
+            git pull --rebase origin main
+          done
+          echo "::error::could not push avail.json after 3 attempts"
+          exit 1
+
+      - name: Report
+        run: |
+          {
+            echo "### Availability sync"
+            echo ""
+            echo "- feeds read: ${{ steps.sync.outputs.total || 'n/a' }}"
+            echo "- feeds failed: ${{ steps.sync.outputs.failed || 'n/a' }}"
+            echo "- availability changed: ${{ steps.sync.outputs.changed || 'n/a' }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail if the rebuild had problems
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "::error::the rebuild step reported a problem - see the log above"
+          exit 1
