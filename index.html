@@ -214,6 +214,34 @@ footer.site .wrap{display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:sp
 .mnav{position:fixed; inset:calc(env(safe-area-inset-top,0px) + 64px) 0 auto 0; z-index:19; background:var(--bg); border-bottom:1px solid var(--line); padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px)); display:flex; flex-direction:column}
 .mnav a{color:var(--fg); text-decoration:none; font-size:17px; padding:12px 4px; border-bottom:1px solid var(--line)}
 .mnav a:last-child{border-bottom:0}
+
+/* audience switch — on every page, under the header */
+.aud{position:sticky; top:calc(env(safe-area-inset-top,0px) + 58px); z-index:18; background:color-mix(in srgb,var(--bg) 94%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.aud .wrap{display:flex; align-items:center; gap:6px; height:50px}
+.aud a{flex:1; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--muted); text-decoration:none; font-size:13.5px; font-weight:500; padding:8px 10px; border-radius:999px; white-space:nowrap; min-width:0}
+.aud a svg{width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.aud a:hover{color:var(--fg); background:var(--sand)}
+.aud a[aria-current="page"]{color:var(--fg); background:var(--sand)}
+.aud a span{overflow:hidden; text-overflow:ellipsis}
+
+/* split hero — the two paths under the home hero */
+.paths{display:grid; grid-template-columns:1fr 1fr; gap:14px; padding-block:34px 4px}
+.paths a{display:block; text-decoration:none; color:inherit; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:22px 22px 20px; transition:border-color .15s,transform .15s}
+.paths a:hover{border-color:var(--rust); transform:translateY(-2px)}
+.paths .pi{width:38px; height:38px; border-radius:50%; background:var(--sand); display:grid; place-items:center; margin-bottom:14px}
+.paths .pi svg{width:18px; height:18px; stroke:var(--rust); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.paths h3{font-family:var(--display); font-weight:400; font-size:23px; line-height:1.15; margin:0 0 6px}
+html[lang="ar"] .paths h3{line-height:1.45}
+.paths p{margin:0; color:var(--muted); font-size:14.5px; max-width:40ch}
+.paths .pgo{display:inline-flex; align-items:center; gap:6px; margin-top:12px; color:var(--rust); font-weight:600; font-size:13.5px}
+.paths .pgo svg{width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:1.8}
+html[dir="rtl"] .paths .pgo svg{transform:scaleX(-1)}
+.paths a.wide{grid-column:1/-1; display:flex; align-items:center; gap:14px; padding:16px 22px}
+.paths a.wide .pi{margin-bottom:0}
+.paths a.wide h3{font-size:18px; margin:0}
+.paths a.wide .pgo{margin:0 0 0 auto}
+html[dir="rtl"] .paths a.wide .pgo{margin:0 auto 0 0}
+
 section.view{display:block}
 .view[hidden]{display:none!important}
 
@@ -375,6 +403,14 @@ footer.site .fine{grid-column:1/-1; border-top:1px solid var(--line); padding-to
   .home-hero .wrap{padding-block:18px 34px}
   .home-hero figure{display:none}
   .areas,.services,.values,.contact-grid,.how{grid-template-columns:1fr}
+  .paths{grid-template-columns:1fr; gap:12px; padding-block:26px 2px}
+  .paths a{padding:18px}
+  .paths h3{font-size:20px}
+  .paths a.wide{padding:14px 18px; gap:12px}
+  .paths a.wide h3{font-size:17px}
+  .paths a.wide .pgo span{display:none}
+  .aud .wrap{height:46px; gap:4px}
+  .aud a{font-size:13px; padding:7px 6px; gap:6px}
   .founder{grid-template-columns:1fr}
   .monogram{width:88px; height:88px; font-size:32px}
   .proof b{font-size:28px}
@@ -655,6 +691,13 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
     </div>
   </div>
 </header>
+<nav class="aud" aria-label="Audience">
+  <div class="wrap">
+    <a href="/stays/" data-nav="stay"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.5V7a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 17 7v6.5"></path><path d="M2 13.5h16M5 15.5v1M15 15.5v1"></path><path d="M6.5 9.5h3.2M6.5 9.5v-1"></path></svg><span data-t="audStay">Stays</span></a>
+    <a href="/owners/" data-nav="owners"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="7.5" cy="12" r="2.6"></circle><path d="M9.9 10.3L15 5.2M13.4 6.8l1.5 1.5M15.3 4.9l1.6 1.6"></path></svg><span data-t="audOwners">Owners</span></a>
+    <a href="/furnish/" data-nav="furniture"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 11V6.5A1.5 1.5 0 0 1 5.5 5h9A1.5 1.5 0 0 1 16 6.5V11"></path><path d="M2.8 11h14.4v3.4H2.8z"></path><path d="M4.4 14.4v1.4M15.6 14.4v1.4"></path></svg><span data-t="audFurn">Furnish</span></a>
+  </div>
+</nav>
 <nav class="mnav" id="mnav" hidden="" aria-label="Menu">
   <a href="/" data-nav="home" data-t="navHome">Home</a>
   <a href="/stays/" data-nav="stay" data-t="navStay">Book a stay</a>
@@ -692,6 +735,25 @@ html[dir="rtl"] .wafab{padding:12px 14px 12px 18px}
       <li><span class="si"><svg viewBox="0 0 20 20"><path d="M10 2.8l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L2.8 8.1l5-.7z"></path></svg></span><span><b class="num">4.86</b><span data-t="pf3">average guest rating</span></span></li>
       <li><span class="si"><svg viewBox="0 0 20 20"><circle cx="10" cy="8" r="4.5"></circle><path d="M7 11.8L5.8 17.5 10 15.5l4.2 2-1.2-5.7"></path></svg></span><span><b class="num">2017</b><span data-t="pf4">Airbnb Superhost since</span></span></li>
     </ul>
+    <div class="paths">
+      <a href="/stays/" data-nav="stay">
+        <span class="pi"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.5V7a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 17 7v6.5"></path><path d="M2 13.5h16M5 15.5v1M15 15.5v1"></path><path d="M6.5 9.5h3.2M6.5 9.5v-1"></path></svg></span>
+        <h3 data-t="pathStayH">Book a stay</h3>
+        <p data-t="pathStayP">Furnished apartments across Casablanca. Pick your dates and see what is free right now.</p>
+        <span class="pgo"><span data-t="pathStayCta">See the apartments</span><svg class="dir" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+      </a>
+      <a href="/owners/" data-nav="owners">
+        <span class="pi"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="7.5" cy="12" r="2.6"></circle><path d="M9.9 10.3L15 5.2M13.4 6.8l1.5 1.5M15.3 4.9l1.6 1.6"></path></svg></span>
+        <h3 data-t="pathOwnH">Own an apartment?</h3>
+        <p data-t="pathOwnP">We manage it end to end — listing, guests, cleaning and payouts — and you keep an app to follow it all.</p>
+        <span class="pgo"><span data-t="pathOwnCta">How it works</span><svg class="dir" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+      </a>
+      <a class="wide" href="/furnish/" data-nav="furniture">
+        <span class="pi"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 11V6.5A1.5 1.5 0 0 1 5.5 5h9A1.5 1.5 0 0 1 16 6.5V11"></path><path d="M2.8 11h14.4v3.4H2.8z"></path><path d="M4.4 14.4v1.4M15.6 14.4v1.4"></path></svg></span>
+        <h3 data-t="pathFurnH">Furnish your apartment</h3>
+        <span class="pgo"><span data-t="pathFurnCta">See the service</span><svg class="dir" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+      </a>
+    </div>
   </div></div>
 
   <div class="sec"><div class="wrap">
@@ -1223,6 +1285,21 @@ const AREA_DESC={
 const AREA_IMG={"Maarif":"MAA-24","Twin Center":"TWC-01","Casa Finance City":"CFC-01","Ferme Bretonne":"FRB-01","Palmier":"PAL-01","Beauséjour":"BSJ-01","Hassan II Mosque":"BRG-01","Zenata Beach":"ZEN-01","Dar Bouazza":"DBZ-01","Tangier":"https://a0.muscache.com/im/pictures/hosting/Hosting-1537603160262100082/original/7adcf5cc-dbe4-4490-ac65-1100087a4176.jpeg?im_w=1200"};
 const WHATSAPP="971501291587"; // digits with country code, e.g. "2126XXXXXXXX"; buttons stay hidden while empty
 
+Object.assign(T.en,{
+  audStay:"Stays", audOwners:"Owners", audFurn:"Furnish",
+  pathStayH:"Book a stay", pathStayP:"Furnished apartments across Casablanca. Pick your dates and see what is free right now.", pathStayCta:"See the apartments",
+  pathOwnH:"Own an apartment?", pathOwnP:"We manage it end to end — listing, guests, cleaning and payouts — and you keep an app to follow it all.", pathOwnCta:"How it works",
+  pathFurnH:"Furnish your apartment", pathFurnCta:"See the service"});
+Object.assign(T.fr,{
+  audStay:"Séjours", audOwners:"Propriétaires", audFurn:"Ameublement",
+  pathStayH:"Réserver un séjour", pathStayP:"Des appartements meublés dans tout Casablanca. Choisissez vos dates et voyez ce qui est libre.", pathStayCta:"Voir les appartements",
+  pathOwnH:"Vous êtes propriétaire ?", pathOwnP:"Nous gérons tout — annonce, voyageurs, ménage et versements — et vous suivez le tout depuis une application.", pathOwnCta:"Comment ça marche",
+  pathFurnH:"Meubler mon appartement", pathFurnCta:"Voir le service"});
+Object.assign(T.ar,{
+  audStay:"الإقامات", audOwners:"الملّاك", audFurn:"التأثيث",
+  pathStayH:"احجز إقامة", pathStayP:"شقق مفروشة في مختلف أنحاء الدار البيضاء. اختر تواريخك وشاهد المتاح الآن.", pathStayCta:"شاهد الشقق",
+  pathOwnH:"هل تملك شقة؟", pathOwnP:"ندير كل شيء — الإعلان والضيوف والتنظيف والتحويلات — وتتابع ذلك كله من تطبيق خاص بك.", pathOwnCta:"كيف يعمل",
+  pathFurnH:"أثّث شقتك", pathFurnCta:"شاهد الخدمة"});
 Object.assign(T.en,{"brandSub": "by RK Conciergerie", "navStay": "Book a stay", "navOwners": "List your apartment", "ctaTop": "Book a stay", "homeH1": "Stay like you live in Casablanca", "homeLead": "Furnished apartments in Maârif, Twin Center, Casa Finance City and by the sea. Pick your dates and see what’s free right now.", "whyEyebrow": "Why guests choose us", "whyH": "Hotel standards, apartment space", "founderRole": "Founder, RK Conciergerie", "founderBio": "Engineer by training and Airbnb Superhost since 2017. Rachid built RK from a side project into a team that manages nearly 100 apartments in Casablanca.", "finalH": "Ready when you are", "finalCta": "Choose your dates", "ctFounder": "Guests and owners talk to the same team I lead. Write to us and we’ll get back to you quickly.", "why": [["photo", "Real photos", "Every photo on this site was taken in the apartment itself."], ["clean", "Clean and checked", "Each apartment is cleaned and checked before you arrive, with fresh linen."], ["guest", "A team that answers", "Message us through Airbnb and a person from our local team replies."]]});
 Object.assign(T.fr,{"brandSub": "par RK Conciergerie", "navStay": "Réserver un séjour", "navOwners": "Confier mon appartement", "ctaTop": "Réserver un séjour", "homeH1": "Vivez Casablanca comme chez vous", "homeLead": "Des appartements meublés au Maârif, au Twin Center, à Casa Finance City et en bord de mer. Choisissez vos dates et voyez ce qui est libre maintenant.", "whyEyebrow": "Pourquoi nos voyageurs nous choisissent", "whyH": "Le standard d’un hôtel, l’espace d’un appartement", "founderRole": "Fondateur, RK Conciergerie", "founderBio": "Ingénieur de formation et Superhôte Airbnb depuis 2017, Rachid a transformé un projet parallèle en une équipe qui gère près de 100 appartements à Casablanca.", "finalH": "Prêt quand vous l’êtes", "finalCta": "Choisir mes dates", "ctFounder": "Voyageurs et propriétaires échangent avec la même équipe, que je dirige. Écrivez-nous, nous vous répondons rapidement.", "why": [["photo", "De vraies photos", "Chaque photo de ce site a été prise dans l’appartement lui-même."], ["clean", "Propre et vérifié", "Chaque appartement est nettoyé et vérifié avant votre arrivée, avec du linge propre."], ["guest", "Une équipe qui répond", "Écrivez-nous sur Airbnb : une personne de notre équipe locale vous répond."]]});
 Object.assign(T.ar,{"brandSub": "من RK Conciergerie", "navStay": "احجز إقامة", "navOwners": "اعرض شقتك معنا", "ctaTop": "احجز إقامة", "homeH1": "عِش الدار البيضاء كأنك في بيتك", "homeLead": "شقق مفروشة في المعاريف وتوين سنتر وكازا فاينانس سيتي وعلى البحر. اختر تواريخك وشاهد المتاح الآن.", "whyEyebrow": "لماذا يختارنا الضيوف", "whyH": "معايير الفندق، ومساحة الشقة", "founderRole": "المؤسس، RK Conciergerie", "founderBio": "مهندس في الأصل ومضيف متميز على Airbnb منذ 2017. حوّل رشيد مشروعًا جانبيًا إلى فريق يدير قرابة 100 شقة في الدار البيضاء.", "finalH": "جاهزون متى كنت جاهزًا", "finalCta": "اختر تواريخك", "ctFounder": "الضيوف والملّاك يتواصلون مع الفريق نفسه الذي أقوده. راسلنا وسنردّ عليك بسرعة.", "why": [["photo", "صور حقيقية", "كل صورة في هذا الموقع التُقطت داخل الشقة نفسها."], ["clean", "نظيفة ومفحوصة", "تُنظَّف كل شقة وتُفحص قبل وصولك، مع مفارش نظيفة."], ["guest", "فريق يردّ عليك", "راسلنا عبر Airbnb وسيردّ عليك شخص من فريقنا المحلي."]]});
@@ -1499,7 +1576,7 @@ function show(view,opts={}){
   if(opts.push){ try{ if(location.pathname!==urlFor(view,state.lang)) history.pushState(null,"",urlFor(view,state.lang)); }catch(e){} }
   applySeo();
   $$("[data-view]").forEach(s=>s.hidden=s.dataset.view!==view);
-  $$(".mainnav a").forEach(a=>{ if(a.dataset.nav===view) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  $$(".mainnav a,.aud a").forEach(a=>{ if(a.dataset.nav===view) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   const slot=view==="stay"?$("#staySlot"):$("#homeSlot");
   if($("#planner").parentNode!==slot) slot.appendChild($("#planner"));
   $("#mnav").hidden=true; $("#menuBtn").setAttribute("aria-expanded","false");
